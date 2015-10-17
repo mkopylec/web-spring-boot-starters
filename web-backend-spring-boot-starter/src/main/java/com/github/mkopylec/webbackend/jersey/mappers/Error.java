@@ -1,5 +1,7 @@
 package com.github.mkopylec.webbackend.jersey.mappers;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.mkopylec.webbackend.exceptions.ApplicationException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
@@ -42,7 +44,13 @@ public class Error {
         return new Error(ex.getErrorCode(), ex.getMessage(), ex.getClass().getName(), path);
     }
 
-    private Error(String errorCode, String message, String exception, String path) {
+    @JsonCreator
+    public Error(
+            @JsonProperty("errorCode") String errorCode,
+            @JsonProperty("message") String message,
+            @JsonProperty("exception") String exception,
+            @JsonProperty("path") String path
+    ) {
         this.errorCode = errorCode;
         this.message = message;
         this.exception = exception;

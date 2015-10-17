@@ -25,7 +25,7 @@ public class ThrowableMapper extends BasicExceptionMapper<Throwable> {
 
     @Override
     public Response getResponse(Throwable ex, String path) {
-        log.error(format("%s. Path: %s. Response HTTP status: %d (%s)",
+        log.error(format("%s | Path: %s | Response HTTP status: %d (%s)",
                         THROWABLE_ERROR_CODE, path, INTERNAL_SERVER_ERROR.getStatusCode(), INTERNAL_SERVER_ERROR), ex
         );
         Error error = errorFromThrowable(ex, path);

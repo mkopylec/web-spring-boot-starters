@@ -24,7 +24,7 @@ public class ApplicationExceptionMapper extends BasicExceptionMapper<Application
     @Override
     public Response getResponse(ApplicationException ex, String path) {
         Response response = ex.getResponse();
-        log.warn("{}. Path: {}. Response HTTP status: {} ({}). Message: \"{}\"",
+        log.warn("{} | Path: {} | Response HTTP status: {} ({}) | Message: \"{}\"",
                 ex.getErrorCode(), path, response.getStatus(), response.getStatusInfo(), ex.getMessage()
         );
         Error error = errorFromApplicationException(ex, path);

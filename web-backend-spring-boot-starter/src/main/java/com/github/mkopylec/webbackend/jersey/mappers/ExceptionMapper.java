@@ -25,7 +25,7 @@ public class ExceptionMapper extends BasicExceptionMapper<Exception> {
 
     @Override
     public Response getResponse(Exception ex, String path) {
-        log.error(format("%s. Path: %s. Response HTTP status: %d (%s)",
+        log.error(format("%s | Path: %s | Response HTTP status: %d (%s)",
                         EXCEPTION_ERROR_CODE, path, INTERNAL_SERVER_ERROR.getStatusCode(), INTERNAL_SERVER_ERROR), ex
         );
         Error error = errorFromException(ex, path);

@@ -1,0 +1,2 @@
+web.backend.jersey:
+  packages: com.github.mkopylec.webbackend.app

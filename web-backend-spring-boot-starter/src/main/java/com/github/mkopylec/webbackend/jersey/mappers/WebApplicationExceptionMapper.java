@@ -25,7 +25,7 @@ public class WebApplicationExceptionMapper extends BasicExceptionMapper<WebAppli
     @Override
     public Response getResponse(WebApplicationException ex, String path) {
         Response response = ex.getResponse();
-        log.warn("{}. Path: {}. Response HTTP status: {} ({})",
+        log.warn("{} | Path: {} | Response HTTP status: {} ({})",
                 WEB_APPLICATION_EXCEPTION_ERROR_CODE, path, response.getStatus(), response.getStatusInfo()
         );
         Error error = errorFromWebApplicationException(ex, path);

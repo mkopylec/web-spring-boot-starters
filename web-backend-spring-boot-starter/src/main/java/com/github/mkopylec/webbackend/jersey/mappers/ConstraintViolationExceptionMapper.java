@@ -30,14 +30,14 @@ public class ConstraintViolationExceptionMapper extends BasicExceptionMapper<Con
         Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
         List<Error> errors = new ArrayList<>(violations.size());
         if (violations.isEmpty()) {
-            log.warn(String.format("%s. Path: %s. Response HTTP status: %d (%s)",
+            log.warn(String.format("%s | Path: %s | Response HTTP status: %d (%s)",
                             Error.CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE, path, BAD_REQUEST.getStatusCode(), BAD_REQUEST), ex
             );
             Error error = Error.errorFromConstraintViolationException(ex, path);
             errors.add(error);
         } else {
             violations.forEach(violation -> {
-                log.warn("{}. Path: {}. Response HTTP status: {} ({}). Violated element: {}='{}'",
+                log.warn("{} | Path: {} | Response HTTP status: {} ({}) | Violated element: {}='{}'",
                         violation.getMessage(), path, BAD_REQUEST.getStatusCode(), BAD_REQUEST, violation.getPropertyPath(), violation.getInvalidValue()
                 );
                 Error error = Error.error(violation.getMessage(), ex, path);
