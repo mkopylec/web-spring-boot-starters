@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import java.lang.*;
-
 import static com.github.mkopylec.webbackend.jersey.mappers.Error.THROWABLE_ERROR_CODE;
 import static com.github.mkopylec.webbackend.jersey.mappers.Error.errorFromThrowable;
 import static java.lang.String.format;

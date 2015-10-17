@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
+import static com.github.mkopylec.webbackend.jersey.mappers.Error.errorFromApplicationException;
 import static org.slf4j.LoggerFactory.getLogger;
 
 @Provider
@@ -26,7 +27,7 @@ public class ApplicationExceptionMapper extends BasicExceptionMapper<Application
         log.warn("{}. Path: {}. Response HTTP status: {} ({}). Message: \"{}\"",
                 ex.getErrorCode(), path, response.getStatus(), response.getStatusInfo(), ex.getMessage()
         );
-        Error error = Error.errorFromApplicationException(ex, path);
+        Error error = errorFromApplicationException(ex, path);
         return buildResponse(response.getStatusInfo(), error);
     }
 }

@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import java.lang.*;
-
 import static com.github.mkopylec.webbackend.jersey.mappers.Error.EXCEPTION_ERROR_CODE;
 import static com.github.mkopylec.webbackend.jersey.mappers.Error.errorFromException;
 import static java.lang.String.format;
