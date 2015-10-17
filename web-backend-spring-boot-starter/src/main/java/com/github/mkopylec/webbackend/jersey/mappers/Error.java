@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.jersey.mappers;
 
 import com.github.mkopylec.webbackend.exceptions.ApplicationException;
 import org.apache.commons.lang3.builder.ToStringBuilder;

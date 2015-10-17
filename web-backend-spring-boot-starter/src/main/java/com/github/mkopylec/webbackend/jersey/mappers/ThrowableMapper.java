@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.jersey.mappers;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import static com.github.mkopylec.webbackend.jersey.Error.THROWABLE_ERROR_CODE;
-import static com.github.mkopylec.webbackend.jersey.Error.errorFromThrowable;
+import java.lang.*;
+
+import static com.github.mkopylec.webbackend.jersey.mappers.Error.THROWABLE_ERROR_CODE;
+import static com.github.mkopylec.webbackend.jersey.mappers.Error.errorFromThrowable;
 import static java.lang.String.format;
 import static javax.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
 import static org.slf4j.LoggerFactory.getLogger;

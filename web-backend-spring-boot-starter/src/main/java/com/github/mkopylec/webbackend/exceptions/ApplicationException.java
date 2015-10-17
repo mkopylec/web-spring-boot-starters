@@ -8,7 +8,7 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public abstract class ApplicationException extends WebApplicationException {
 
-    private String errorCode;
+    private final String errorCode;
 
     public ApplicationException(String errorCode, String message, Status httpStatus) {
         super(message, httpStatus);

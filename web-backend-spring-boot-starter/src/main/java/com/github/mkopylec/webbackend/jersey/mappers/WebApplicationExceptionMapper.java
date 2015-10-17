@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.jersey.mappers;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,10 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
-import static com.github.mkopylec.webbackend.jersey.Error.WEB_APPLICATION_EXCEPTION_ERROR_CODE;
-import static com.github.mkopylec.webbackend.jersey.Error.errorFromWebApplicationException;
+import java.lang.*;
+
+import static com.github.mkopylec.webbackend.jersey.mappers.Error.WEB_APPLICATION_EXCEPTION_ERROR_CODE;
+import static com.github.mkopylec.webbackend.jersey.mappers.Error.errorFromWebApplicationException;
 import static org.slf4j.LoggerFactory.getLogger;
 
 @Provider

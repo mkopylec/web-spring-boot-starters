@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.jersey.mappers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.core.Response;

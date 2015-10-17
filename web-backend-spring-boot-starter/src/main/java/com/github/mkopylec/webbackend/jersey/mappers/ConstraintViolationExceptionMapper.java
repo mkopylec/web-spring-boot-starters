@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.jersey.mappers;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.github.mkopylec.webbackend.jersey.Error.CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE;
-import static com.github.mkopylec.webbackend.jersey.Error.error;
-import static com.github.mkopylec.webbackend.jersey.Error.errorFromConstraintViolationException;
 import static java.lang.String.format;
 import static javax.ws.rs.core.Response.Status.BAD_REQUEST;
 import static org.slf4j.LoggerFactory.getLogger;
@@ -34,17 +31,17 @@ public class ConstraintViolationExceptionMapper extends BasicExceptionMapper<Con
         Set<ConstraintViolation<?>> violations = ex.getConstraintViolations();
         List<Error> errors = new ArrayList<>(violations.size());
         if (violations.isEmpty()) {
-            log.warn(format("%s. Path: %s. Response HTTP status: %d (%s)",
-                            CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE, path, BAD_REQUEST.getStatusCode(), BAD_REQUEST), ex
+            log.warn(String.format("%s. Path: %s. Response HTTP status: %d (%s)",
+                            Error.CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE, path, BAD_REQUEST.getStatusCode(), BAD_REQUEST), ex
             );
-            Error error = errorFromConstraintViolationException(ex, path);
+            Error error = Error.errorFromConstraintViolationException(ex, path);
             errors.add(error);
         } else {
             violations.forEach(violation -> {
                 log.warn("{}. Path: {}. Response HTTP status: {} ({}). Violated element: {}='{}'",
                         violation.getMessage(), path, BAD_REQUEST.getStatusCode(), BAD_REQUEST, violation.getPropertyPath(), violation.getInvalidValue()
                 );
-                Error error = error(violation.getMessage(), ex, path);
+                Error error = Error.error(violation.getMessage(), ex, path);
                 errors.add(error);
             });
         }
