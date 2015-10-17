@@ -1,5 +1,6 @@
 package com.github.mkopylec.webbackend.jersey;
 
+import com.github.mkopylec.webbackend.jersey.mappers.BasicExceptionMapper;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import javax.ws.rs.ApplicationPath;
+import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
@@ -19,7 +21,10 @@ public class ResourcesConfig extends ResourceConfig {
 
     @PostConstruct
     protected void initResources() {
-        List<String> packages = jersey.getPackages();
+        List<String> packages = new ArrayList<>(jersey.getPackages());
+        if (jersey.isDefaultExceptionMappers()) {
+            packages.add(BasicExceptionMapper.class.getPackage().getName());
+        }
         packages(packages.toArray(new String[packages.size()]));
     }
 }

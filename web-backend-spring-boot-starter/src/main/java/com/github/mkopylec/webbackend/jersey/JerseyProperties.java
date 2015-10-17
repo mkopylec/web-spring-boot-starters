@@ -9,6 +9,7 @@ import java.util.List;
 public class JerseyProperties {
 
     private List<String> packages = new ArrayList<>();
+    private boolean defaultExceptionMappers = true;
 
     public List<String> getPackages() {
         return packages;
@@ -16,5 +17,13 @@ public class JerseyProperties {
 
     public void setPackages(List<String> packages) {
         this.packages = packages;
+    }
+
+    public boolean isDefaultExceptionMappers() {
+        return defaultExceptionMappers;
+    }
+
+    public void setDefaultExceptionMappers(boolean defaultExceptionMappers) {
+        this.defaultExceptionMappers = defaultExceptionMappers;
     }
 }
