@@ -26,7 +26,7 @@ public class ApplicationExceptionMapper extends BasicExceptionMapper<Application
         log.warn("{}. Path: {}. Response HTTP status: {} ({}). Message: \"{}\"",
                 ex.getErrorCode(), path, response.getStatus(), response.getStatusInfo(), ex.getMessage()
         );
-        Error error = Error.errorFromWebApplicationException(ex, path);
+        Error error = Error.errorFromApplicationException(ex, path);
         return buildResponse(response.getStatusInfo(), error);
     }
 }

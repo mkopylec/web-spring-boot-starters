@@ -68,7 +68,7 @@ public class Error {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("statusCode", errorCode)
+                .append("errorCode", errorCode)
                 .append("message", message)
                 .append("exception", exception)
                 .append("path", path)
