@@ -1,5 +1,6 @@
 package com.github.mkopylec.webbackend.jersey.mappers;
 
+import com.github.mkopylec.webbackend.jersey.JerseyProperties;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,8 +19,8 @@ public class WebApplicationExceptionMapper extends BasicExceptionMapper<WebAppli
     private static final Logger log = getLogger(WebApplicationExceptionMapper.class);
 
     @Autowired
-    public WebApplicationExceptionMapper(HttpServletRequest request) {
-        super(request);
+    public WebApplicationExceptionMapper(HttpServletRequest request, JerseyProperties jersey) {
+        super(request, jersey);
     }
 
     @Override

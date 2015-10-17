@@ -3,15 +3,16 @@ package com.github.mkopylec.webbackend.app.mappers;
 import com.github.mkopylec.webbackend.exceptions.ApplicationException;
 import org.springframework.stereotype.Component;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.Valid;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import static com.github.mkopylec.webbackend.app.Strings.APPLICATION_EXCEPTION_CODE;
 import static com.github.mkopylec.webbackend.app.Strings.APPLICATION_EXCEPTION_MESSAGE;
 import static com.github.mkopylec.webbackend.app.Strings.CUSTOM_EXCEPTION_MESSAGE;
-import static com.github.mkopylec.webbackend.app.Strings.EMPTY_REQUEST_DATA;
 import static com.github.mkopylec.webbackend.app.Strings.EXCEPTION_MESSAGE;
 import static com.github.mkopylec.webbackend.app.Strings.THROWABLE_MESSAGE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -34,9 +35,10 @@ public class ExceptionMappersTestEndpoint {
         throw new Exception(EXCEPTION_MESSAGE);
     }
 
-    @GET
+    @POST
+    @Consumes(APPLICATION_JSON)
     @Path("constraint")
-    public void failWithConstraintViolationException(@NotNull(message = EMPTY_REQUEST_DATA) RequestData data) {
+    public void failWithConstraintViolationException(@Valid RequestData data) {
     }
 
     @GET

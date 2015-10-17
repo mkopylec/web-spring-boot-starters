@@ -1,5 +1,6 @@
 package com.github.mkopylec.webbackend.jersey.mappers;
 
+import com.github.mkopylec.webbackend.jersey.JerseyProperties;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,8 +22,8 @@ public class ConstraintViolationExceptionMapper extends BasicExceptionMapper<Con
     private static final Logger log = getLogger(ConstraintViolationExceptionMapper.class);
 
     @Autowired
-    protected ConstraintViolationExceptionMapper(HttpServletRequest request) {
-        super(request);
+    protected ConstraintViolationExceptionMapper(HttpServletRequest request, JerseyProperties jersey) {
+        super(request, jersey);
     }
 
     @Override

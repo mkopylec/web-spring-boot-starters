@@ -5,11 +5,14 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+
 @ConfigurationProperties("web.backend.jersey")
 public class JerseyProperties {
 
     private List<String> packages = new ArrayList<>();
     private boolean defaultExceptionMappers = true;
+    private String errorMediaType = APPLICATION_JSON;
 
     public List<String> getPackages() {
         return packages;
@@ -25,5 +28,13 @@ public class JerseyProperties {
 
     public void setDefaultExceptionMappers(boolean defaultExceptionMappers) {
         this.defaultExceptionMappers = defaultExceptionMappers;
+    }
+
+    public String getErrorMediaType() {
+        return errorMediaType;
+    }
+
+    public void setErrorMediaType(String errorMediaType) {
+        this.errorMediaType = errorMediaType;
     }
 }
