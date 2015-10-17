@@ -1,10 +1,8 @@
 package com.github.mkopylec.webbackend;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import static org.springframework.boot.SpringApplication.run;
 
-@SpringBootApplication
+@WebBackendApplication
 public class BackendApplication {
 
     public static void main(String[] args) {
