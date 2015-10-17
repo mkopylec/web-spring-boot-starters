@@ -1,0 +1,11 @@
+apply plugin: 'groovy'
+
+dependencies {
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jersey', version: '+'
+    compile group: 'com.google.guava', name: 'guava', version: '+'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '+'
+    testCompile group: 'org.spockframework', name: 'spock-spring', version: '+'
+}
