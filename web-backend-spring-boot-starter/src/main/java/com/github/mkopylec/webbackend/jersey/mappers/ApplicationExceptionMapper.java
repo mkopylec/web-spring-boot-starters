@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
@@ -18,7 +19,7 @@ public class ApplicationExceptionMapper extends BasicExceptionMapper<Application
     private static final Logger log = getLogger(ApplicationExceptionMapper.class);
 
     @Autowired
-    public ApplicationExceptionMapper(HttpServletRequest request, JerseyProperties jersey) {
+    public ApplicationExceptionMapper(@Context HttpServletRequest request, JerseyProperties jersey) {
         super(request, jersey);
     }
 

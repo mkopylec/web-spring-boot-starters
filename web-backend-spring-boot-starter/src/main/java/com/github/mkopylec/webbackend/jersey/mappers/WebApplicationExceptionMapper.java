@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 
@@ -19,7 +20,7 @@ public class WebApplicationExceptionMapper extends BasicExceptionMapper<WebAppli
     private static final Logger log = getLogger(WebApplicationExceptionMapper.class);
 
     @Autowired
-    public WebApplicationExceptionMapper(HttpServletRequest request, JerseyProperties jersey) {
+    public WebApplicationExceptionMapper(@Context HttpServletRequest request, JerseyProperties jersey) {
         super(request, jersey);
     }
 

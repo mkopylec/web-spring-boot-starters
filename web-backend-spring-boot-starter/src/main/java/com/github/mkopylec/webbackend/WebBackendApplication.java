@@ -1,6 +1,7 @@
 package com.github.mkopylec.webbackend;
 
 import com.github.mkopylec.webbackend.jersey.EnableJerseyResources;
+import com.github.mkopylec.webbackend.logging.EnableMdcLogger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.lang.annotation.Documented;
@@ -14,6 +15,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(TYPE)
 @Retention(RUNTIME)
 @EnableJerseyResources
+@EnableMdcLogger
 @SpringBootApplication
 public @interface WebBackendApplication {
 

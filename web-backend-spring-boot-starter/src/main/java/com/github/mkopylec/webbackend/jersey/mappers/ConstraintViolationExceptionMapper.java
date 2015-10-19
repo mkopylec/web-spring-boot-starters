@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ public class ConstraintViolationExceptionMapper extends BasicExceptionMapper<Con
     private static final Logger log = getLogger(ConstraintViolationExceptionMapper.class);
 
     @Autowired
-    protected ConstraintViolationExceptionMapper(HttpServletRequest request, JerseyProperties jersey) {
+    protected ConstraintViolationExceptionMapper(@Context HttpServletRequest request, JerseyProperties jersey) {
         super(request, jersey);
     }
 

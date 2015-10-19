@@ -1,2 +1,3 @@
-web.backend.jersey:
-  packages: com.github.mkopylec.webbackend.app
+web.backend:
+  jersey.packages: com.github.mkopylec.webbackend.app
+  logging.mdcValueLength: 5
