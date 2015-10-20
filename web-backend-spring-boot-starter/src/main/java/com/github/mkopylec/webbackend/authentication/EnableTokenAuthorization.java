@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.jersey;
+package com.github.mkopylec.webbackend.authentication;
 
 import org.springframework.context.annotation.Import;
 
@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target(TYPE)
 @Retention(RUNTIME)
-@Import(ResourcesConfiguration.class)
-public @interface EnableJerseyResources {
+@Import(SecurityConfiguration.class)
+public @interface EnableTokenAuthorization {
 
 }

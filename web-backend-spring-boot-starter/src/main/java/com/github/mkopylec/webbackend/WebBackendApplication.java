@@ -1,5 +1,6 @@
 package com.github.mkopylec.webbackend;
 
+import com.github.mkopylec.webbackend.authentication.EnableTokenAuthorization;
 import com.github.mkopylec.webbackend.jersey.EnableJerseyResources;
 import com.github.mkopylec.webbackend.logging.EnableMdcLogger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,6 +17,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Retention(RUNTIME)
 @EnableJerseyResources
 @EnableMdcLogger
+@EnableTokenAuthorization
 @SpringBootApplication
 public @interface WebBackendApplication {
 

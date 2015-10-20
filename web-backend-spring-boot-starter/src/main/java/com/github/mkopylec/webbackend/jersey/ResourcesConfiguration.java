@@ -14,7 +14,7 @@ import java.util.List;
 @Configuration
 @ApplicationPath("")
 @EnableConfigurationProperties(JerseyProperties.class)
-public class ResourcesConfig extends ResourceConfig {
+public class ResourcesConfiguration extends ResourceConfig {
 
     @Autowired
     protected JerseyProperties jersey;

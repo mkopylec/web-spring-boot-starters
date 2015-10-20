@@ -9,7 +9,7 @@ import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
 
 @Configuration
 @EnableConfigurationProperties(MdcLoggingProperties.class)
-public class MdcConfig {
+public class MdcConfiguration {
 
     @Bean
     public FilterRegistrationBean mdcFilter(MdcLoggingProperties mdcLogging) {
