@@ -64,6 +64,9 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
             log.error(format("Error authorizing token. Authorization header: '%s'", authorization), ex);
         }
         SecurityContextHolder.getContext().setAuthentication(authorizationToken);
+
+        log.info("Token authorization completed: {}", authorizationToken);
+
         return authorizationToken;
     }
 
