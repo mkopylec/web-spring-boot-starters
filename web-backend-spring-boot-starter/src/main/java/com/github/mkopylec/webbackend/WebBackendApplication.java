@@ -1,6 +1,6 @@
 package com.github.mkopylec.webbackend;
 
-import com.github.mkopylec.webbackend.authentication.EnableTokenAuthorization;
+import com.github.mkopylec.webbackend.security.EnableTokenAuthorization;
 import com.github.mkopylec.webbackend.jersey.EnableJerseyResources;
 import com.github.mkopylec.webbackend.logging.EnableMdcLogger;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -14,19 +14,19 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 
 public class MdcEnabler implements Filter {
 
-    private final MdcLoggingProperties mdcLogging;
+    private final LoggingProperties logging;
 
-    public MdcEnabler(MdcLoggingProperties mdcLogging) {
-        this.mdcLogging = mdcLogging;
+    public MdcEnabler(LoggingProperties logging) {
+        this.logging = logging;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        MDC.put(mdcLogging.getMdcKey(), randomAlphanumeric(mdcLogging.getMdcValueLength()));
+        MDC.put(logging.getMdcKey(), randomAlphanumeric(logging.getMdcValueLength()));
         try {
             chain.doFilter(request, response);
         } finally {
-            MDC.remove(mdcLogging.getMdcKey());
+            MDC.remove(logging.getMdcKey());
         }
     }
 

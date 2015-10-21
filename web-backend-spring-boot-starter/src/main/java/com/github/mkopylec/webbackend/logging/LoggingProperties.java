@@ -3,7 +3,7 @@ package com.github.mkopylec.webbackend.logging;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("web.backend.logging")
-public class MdcLoggingProperties {
+public class LoggingProperties {
 
     private String mdcKey = "requestId";
     private int mdcValueLength = 10;

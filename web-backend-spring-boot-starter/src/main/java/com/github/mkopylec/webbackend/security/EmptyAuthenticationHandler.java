@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.authentication;
+package com.github.mkopylec.webbackend.security;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
