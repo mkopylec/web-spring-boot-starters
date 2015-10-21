@@ -1,6 +1,7 @@
 package com.github.mkopylec.webbackend.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -13,6 +14,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -20,7 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        TokenAuthenticationFilter authenticationFilter = new TokenAuthenticationFilter(security);
+        TokenAuthorizationFilter authenticationFilter = new TokenAuthorizationFilter(security);
         http
                 .sessionManagement().sessionCreationPolicy(STATELESS)
                 .and()
