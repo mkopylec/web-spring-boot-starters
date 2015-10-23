@@ -10,7 +10,7 @@ import static org.springframework.core.Ordered.HIGHEST_PRECEDENCE;
 
 @Configuration
 @EnableConfigurationProperties(LoggingProperties.class)
-public class MdcConfiguration {
+public class LoggingConfiguration {
 
     @Autowired
     private LoggingProperties logging;

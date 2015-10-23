@@ -5,13 +5,13 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("web.backend.security")
 public class SecurityProperties {
 
-    private String tokenKey;
+    private String tokenKeyFile = "token_key.pem";
 
-    public String getTokenKey() {
-        return tokenKey;
+    public String getTokenKeyFile() {
+        return tokenKeyFile;
     }
 
-    public void setTokenKey(String tokenKey) {
-        this.tokenKey = tokenKey;
+    public void setTokenKeyFile(String tokenKeyFile) {
+        this.tokenKeyFile = tokenKeyFile;
     }
 }

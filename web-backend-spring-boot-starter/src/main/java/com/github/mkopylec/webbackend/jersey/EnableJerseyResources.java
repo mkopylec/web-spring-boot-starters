@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target(TYPE)
 @Retention(RUNTIME)
-@Import(ResourcesConfiguration.class)
+@Import(JerseyConfiguration.class)
 public @interface EnableJerseyResources {
 
 }

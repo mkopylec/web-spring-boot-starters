@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target(TYPE)
 @Retention(RUNTIME)
-@Import(MdcConfiguration.class)
+@Import(LoggingConfiguration.class)
 public @interface EnableMdcLogger {
 
 }

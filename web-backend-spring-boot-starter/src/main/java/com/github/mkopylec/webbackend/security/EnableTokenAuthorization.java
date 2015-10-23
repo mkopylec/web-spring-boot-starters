@@ -12,7 +12,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Documented
 @Target(TYPE)
 @Retention(RUNTIME)
-@Import(SecurityConfiguration.class)
+@Import({SecurityConfiguration.class, MethodSecurityConfiguration.class})
 public @interface EnableTokenAuthorization {
 
 }

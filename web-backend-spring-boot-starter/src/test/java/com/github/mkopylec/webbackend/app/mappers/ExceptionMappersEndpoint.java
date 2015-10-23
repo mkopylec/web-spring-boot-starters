@@ -21,7 +21,7 @@ import static javax.ws.rs.core.Response.Status.NOT_IMPLEMENTED;
 @Component
 @Path("mappers")
 @Produces(APPLICATION_JSON)
-public class ExceptionMappersTestEndpoint {
+public class ExceptionMappersEndpoint {
 
     @GET
     @Path("throwable")

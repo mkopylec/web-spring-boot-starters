@@ -1,6 +1,7 @@
-package com.github.mkopylec.webbackend.security;
+package com.github.mkopylec.webbackend.security.authorization;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.mkopylec.webbackend.security.SecurityProperties;
 import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.springframework.core.io.ClassPathResource;
@@ -19,17 +20,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static com.google.common.base.Preconditions.checkState;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.removeStart;
-import static org.apache.commons.lang3.StringUtils.startsWith;
 import static org.slf4j.LoggerFactory.getLogger;
 import static org.springframework.security.jwt.JwtHelper.decodeAndVerify;
 
 public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFilter {
 
-    private static final String CLASSPATH_PREFIX = "classpath:";
     private static final String AUTHORIZATION_HEADER = "Authorization";
     private static final String BEARER_PREFIX = "Bearer";
 
@@ -71,12 +69,9 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
     }
 
     private void setVerifier(SecurityProperties security) throws IOException {
-        String tokenKey = security.getTokenKey();
-        if (startsWith(tokenKey, CLASSPATH_PREFIX)) {
-            InputStream stream = new ClassPathResource(tokenKey).getInputStream();
-            tokenKey = IOUtils.toString(stream);
-        }
-        checkState(isNotBlank(tokenKey), "Empty token key. Set it using web.backend.security.tokenKey property.");
+        String tokenKey = security.getTokenKeyFile();
+        InputStream stream = new ClassPathResource(tokenKey).getInputStream();
+        tokenKey = IOUtils.toString(stream);
         verifier = new RsaVerifier(tokenKey);
     }
 

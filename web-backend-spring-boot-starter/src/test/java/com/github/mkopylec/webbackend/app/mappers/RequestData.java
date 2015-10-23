@@ -20,7 +20,8 @@ public class RequestData {
     @JsonCreator
     public RequestData(
             @JsonProperty("content") String content,
-            @JsonProperty("number") int number) {
+            @JsonProperty("number") int number
+    ) {
         this.content = content;
         this.number = number;
     }
