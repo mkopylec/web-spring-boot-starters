@@ -49,11 +49,11 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
         String authorization = request.getHeader(AUTHORIZATION_HEADER);
         try {
             if (isNotBlank(authorization)) {
-                JwtToken jwtToken = decodeJwtToken(authorization);
-                if (jwtToken != null) {
-                    authorizationToken.setPrincipal(jwtToken.getSubject());
-                    authorizationToken.setAuthorities(jwtToken.getAuthorities());
-                    if (jwtToken.isNotExpired()) {
+                JsonWebToken jwt = decodeToken(authorization);
+                if (jwt != null) {
+                    authorizationToken.setPrincipal(jwt.getSubject());
+                    authorizationToken.setAuthorities(jwt.getAuthorities());
+                    if (jwt.isNotExpired()) {
                         authorizationToken.setAuthenticated(true);
                     }
                 }
@@ -75,11 +75,11 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
         verifier = new RsaVerifier(tokenKey);
     }
 
-    private JwtToken decodeJwtToken(String authorization) {
+    private JsonWebToken decodeToken(String authorization) {
         String token = removeStart(authorization, BEARER_PREFIX).trim();
         try {
             Jwt jwt = decodeAndVerify(token, verifier);
-            return mapper.readValue(jwt.getClaims(), JwtToken.class);
+            return mapper.readValue(jwt.getClaims(), JsonWebToken.class);
         } catch (Exception ex) {
             log.warn("Cannot decode authorization token. {}", ex.getMessage());
             return null;

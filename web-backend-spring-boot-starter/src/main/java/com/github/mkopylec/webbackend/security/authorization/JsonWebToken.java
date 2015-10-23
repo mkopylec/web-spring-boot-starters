@@ -11,14 +11,14 @@ import static java.lang.System.currentTimeMillis;
 import static org.springframework.security.core.authority.AuthorityUtils.createAuthorityList;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class JwtToken {
+public class JsonWebToken {
 
     private final String subject;
     private final long expirationTime;
     private final List<String> authorities;
 
     @JsonCreator
-    public JwtToken(
+    public JsonWebToken(
             @JsonProperty("sub") String subject,
             @JsonProperty("exp") Long expirationTime,
             @JsonProperty("auth") List<String> authorities
