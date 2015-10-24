@@ -63,8 +63,6 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
         }
         SecurityContextHolder.getContext().setAuthentication(authorizationToken);
 
-        log.info("Token authorization completed: {}", authorizationToken);
-
         return authorizationToken;
     }
 

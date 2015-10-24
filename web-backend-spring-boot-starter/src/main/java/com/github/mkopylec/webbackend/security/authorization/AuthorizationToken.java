@@ -7,9 +7,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
+
 public class AuthorizationToken extends AbstractAuthenticationToken {
 
-    private Object principal;
+    public static final String UNKNOWN_PRINCIPAL = "Unknown";
+
+    private Object principal = UNKNOWN_PRINCIPAL;
     private List<GrantedAuthority> authorities = new ArrayList<>();
 
     public AuthorizationToken() {
@@ -22,7 +26,9 @@ public class AuthorizationToken extends AbstractAuthenticationToken {
     }
 
     public void setPrincipal(Object principal) {
-        this.principal = principal;
+        if (principal != null) {
+            this.principal = principal;
+        }
     }
 
     @Override
@@ -36,6 +42,8 @@ public class AuthorizationToken extends AbstractAuthenticationToken {
     }
 
     public void setAuthorities(List<GrantedAuthority> authorities) {
-        this.authorities = authorities;
+        if (isNotEmpty(authorities)) {
+            this.authorities = authorities;
+        }
     }
 }

@@ -1,4 +1,6 @@
 web.backend:
   jersey.packages: com.github.mkopylec.webbackend.app
   logging.mdcValueLength: 5
-  security.tokenKeyFile: token_key_public.pem
+  security:
+    tokenKeyFile: token_key_public.pem
+    ignoredPaths: /mappers/**

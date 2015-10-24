@@ -8,6 +8,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '+'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
     compile group: 'org.apache.commons', name: 'commons-io', version: '+'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '+'
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '+'
     testCompile group: 'org.spockframework', name: 'spock-spring', version: '+'

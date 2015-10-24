@@ -17,7 +17,7 @@ public class TokenAuthorizationEndpoint {
 
     @GET
     @Path("authenticated")
-    @PreAuthorize("authentication.authenticated")
+    @PreAuthorize("isAuthenticated()")
     public ResponseData permitAuthenticated() {
         return new ResponseData(RESPONSE_DATA_MESSAGE);
     }

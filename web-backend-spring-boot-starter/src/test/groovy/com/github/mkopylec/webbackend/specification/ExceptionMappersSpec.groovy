@@ -14,16 +14,12 @@ import static com.github.mkopylec.webbackend.app.Strings.EXCEPTION_MESSAGE
 import static com.github.mkopylec.webbackend.app.Strings.INVALID_NUMBER
 import static com.github.mkopylec.webbackend.app.Strings.THROWABLE_MESSAGE
 import static com.github.mkopylec.webbackend.assertions.CustomAssertions.assertThat
-import static javax.ws.rs.client.Entity.entity
-import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 
 class ExceptionMappersSpec extends BasicSpec {
 
     def "Should fail with fatal error"() {
         when:
-        def response = getWebTarget('mappers/throwable')
-                .request()
-                .get()
+        def response = GET 'mappers/throwable'
 
         then:
         response.status == 500
@@ -36,9 +32,7 @@ class ExceptionMappersSpec extends BasicSpec {
 
     def "Should fail with unexpected error"() {
         when:
-        def response = getWebTarget('mappers/exception')
-                .request()
-                .get()
+        def response = GET 'mappers/exception'
 
         then:
         response.status == 500
@@ -51,9 +45,7 @@ class ExceptionMappersSpec extends BasicSpec {
 
     def "Should fail with HTTP error"() {
         when:
-        def response = getWebTarget('mappers/invalid')
-                .request()
-                .get()
+        def response = GET 'mappers/invalid'
 
         then:
         response.status == 404
@@ -69,9 +61,7 @@ class ExceptionMappersSpec extends BasicSpec {
         def requestData = new RequestData('', 0)
 
         when:
-        def response = getWebTarget('mappers/constraint')
-                .request()
-                .post(entity(requestData, APPLICATION_JSON))
+        def response = POST 'mappers/constraint', requestData
 
         then:
         response.status == 400
@@ -85,9 +75,7 @@ class ExceptionMappersSpec extends BasicSpec {
 
     def "Should fail with application error"() {
         when:
-        def response = getWebTarget('mappers/application')
-                .request()
-                .get()
+        def response = GET 'mappers/application'
 
         then:
         response.status == 501
@@ -100,9 +88,7 @@ class ExceptionMappersSpec extends BasicSpec {
 
     def "Should fail with custom error"() {
         when:
-        def response = getWebTarget('mappers/custom')
-                .request()
-                .get()
+        def response = GET 'mappers/custom'
 
         then:
         response.status == 403
