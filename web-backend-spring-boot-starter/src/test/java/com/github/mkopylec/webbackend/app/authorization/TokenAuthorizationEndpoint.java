@@ -21,4 +21,11 @@ public class TokenAuthorizationEndpoint {
     public ResponseData permitAuthenticated() {
         return new ResponseData(RESPONSE_DATA_MESSAGE);
     }
+
+    @GET
+    @Path("authority")
+    @PreAuthorize("hasRole('USER')")
+    public ResponseData permitUser() {
+        return new ResponseData(RESPONSE_DATA_MESSAGE);
+    }
 }

@@ -51,6 +51,7 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
             if (isNotBlank(authorization)) {
                 JsonWebToken jwt = decodeToken(authorization);
                 if (jwt != null) {
+                    log.info("Authorizing token: {}", jwt);
                     authorizationToken.setPrincipal(jwt.getSubject());
                     authorizationToken.setAuthorities(jwt.getAuthorities());
                     if (jwt.isNotExpired()) {

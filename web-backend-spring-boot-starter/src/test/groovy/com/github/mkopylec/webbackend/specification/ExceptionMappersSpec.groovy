@@ -83,7 +83,7 @@ class ExceptionMappersSpec extends BasicSpec {
         def errors = response.readEntity(new GenericType<List<Error>>() {})
         assertThat(errors)
                 .containsErrors(1)
-                .containsErrorFor(APPLICATION_EXCEPTION_CODE, APPLICATION_EXCEPTION_MESSAGE, 'com.github.mkopylec.webbackend.app.mappers.ExceptionMappersTestEndpoint$1', '/mappers/application')
+                .containsErrorFor(APPLICATION_EXCEPTION_CODE, APPLICATION_EXCEPTION_MESSAGE, 'com.github.mkopylec.webbackend.app.mappers.ExceptionMappersEndpoint$1', '/mappers/application')
     }
 
     def "Should fail with custom error"() {
