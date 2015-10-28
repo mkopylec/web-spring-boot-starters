@@ -1,15 +1,4 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '+'
-    }
-}
-
 subprojects {
-
-    apply plugin: 'spring-boot'
 
     group 'com.github.mkopylec'
     version '0.1.0'
