@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static com.github.mkopylec.webbackend.security.authorization.AuthorizationToken.EXPIRED_FLAG;
+import static com.github.mkopylec.webbackend.security.authorization.AuthorizationToken.NOT_EXPIRED_FLAG;
 import static java.lang.String.format;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.apache.commons.lang3.StringUtils.removeStart;
@@ -54,8 +56,10 @@ public class TokenAuthorizationFilter extends AbstractAuthenticationProcessingFi
                     log.info("Authorizing token: {}", jwt);
                     authorizationToken.setPrincipal(jwt.getSubject());
                     authorizationToken.setAuthorities(jwt.getAuthorities());
-                    if (jwt.isNotExpired()) {
-                        authorizationToken.setAuthenticated(true);
+                    if (jwt.isExpired()) {
+                        authorizationToken.setDetails(EXPIRED_FLAG);
+                    } else {
+                        authorizationToken.setDetails(NOT_EXPIRED_FLAG);
                     }
                 }
             }

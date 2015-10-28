@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import static com.github.mkopylec.webbackend.security.authorization.AuthorizationToken.NOT_EXPIRED_FLAG;
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class TokenAuthorizationProvider implements AuthenticationProvider {
@@ -14,7 +15,10 @@ public class TokenAuthorizationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        if (!authentication.isAuthenticated()) {
+        Object expiredFlag = authentication.getDetails();
+        if (expiredFlag == NOT_EXPIRED_FLAG) {
+            authentication.setAuthenticated(true);
+        } else {
             authentication = new AnonymousToken(authentication.getPrincipal());
         }
         SecurityContextHolder.getContext().setAuthentication(authentication);

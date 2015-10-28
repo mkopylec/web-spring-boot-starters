@@ -43,8 +43,8 @@ public class JsonWebToken {
     }
 
     @JsonIgnore
-    public boolean isNotExpired() {
-        return expirationTime > currentTimeMillis() / 1000;
+    public boolean isExpired() {
+        return expirationTime < currentTimeMillis() / 1000;
     }
 
     @JsonIgnore
