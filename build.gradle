@@ -1,5 +1,7 @@
 subprojects {
 
+    apply plugin: 'java'
+
     group 'com.github.mkopylec'
     version '0.1.0'
 
