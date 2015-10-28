@@ -1,4 +1,5 @@
 # Web Spring Boot Starters
+[![Build Status](https://travis-ci.org/mkopylec/web-spring-boot-starters.svg?branch=master)](https://travis-ci.org/mkopylec/web-spring-boot-starters)
 
 To be done...
 
