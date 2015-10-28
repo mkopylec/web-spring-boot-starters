@@ -1,5 +1,8 @@
 package com.github.mkopylec.webbackend
 
+import ch.qos.logback.classic.Logger
+import ch.qos.logback.classic.spi.ILoggingEvent
+import ch.qos.logback.core.filter.Filter
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.github.mkopylec.webbackend.app.BackendApplication
 import com.github.mkopylec.webbackend.security.authorization.JsonWebToken
@@ -24,6 +27,7 @@ import static javax.ws.rs.client.ClientBuilder.newClient
 import static javax.ws.rs.client.Entity.entity
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric
+import static org.slf4j.LoggerFactory.getLogger
 import static org.springframework.security.jwt.JwtHelper.encode
 
 @WebIntegrationTest
@@ -71,6 +75,16 @@ abstract class BasicSpec extends Specification {
 
     protected String invalidAuthorizationToken() {
         return randomAlphanumeric(30)
+    }
+
+    protected void setLoggerFilter(Filter<ILoggingEvent> filter) {
+        Logger logger = (Logger) getLogger('ROOT')
+        logger.getAppender('CONSOLE').addFilter(filter)
+    }
+
+    protected void removeLoggerFilters() {
+        Logger logger = (Logger) getLogger('ROOT')
+        logger.getAppender('CONSOLE').clearAllFilters()
     }
 
     private WebTarget getWebTarget(String path) {

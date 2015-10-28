@@ -42,7 +42,7 @@ class TokenAuthorizationSpec extends BasicSpec {
         data.message == RESPONSE_DATA_MESSAGE
     }
 
-    def "Should get response data when authenticated with role different than user"() {
+    def "Should not get response data when authenticated with role different than user"() {
         given:
         def authorizationToken = validAuthorizationToken(['ADMIN'])
 

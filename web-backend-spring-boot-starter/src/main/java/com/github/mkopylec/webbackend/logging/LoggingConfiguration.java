@@ -1,5 +1,6 @@
 package com.github.mkopylec.webbackend.logging;
 
+import com.github.mkopylec.webbackend.logging.mdc.MdcEnabler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

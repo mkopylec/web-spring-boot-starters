@@ -1,5 +1,6 @@
-package com.github.mkopylec.webbackend.logging;
+package com.github.mkopylec.webbackend.logging.mdc;
 
+import com.github.mkopylec.webbackend.logging.LoggingProperties;
 import org.slf4j.MDC;
 
 import javax.servlet.Filter;
