@@ -10,7 +10,7 @@ import static java.util.Collections.singletonList;
 public class SecurityProperties {
 
     private String tokenKeyFile = "token_key.pem";
-    private List<String> securedAntPaths = singletonList("/**");
+    private List<String> ignoredAntPaths = singletonList("/**");
 
     public String getTokenKeyFile() {
         return tokenKeyFile;
@@ -20,11 +20,11 @@ public class SecurityProperties {
         this.tokenKeyFile = tokenKeyFile;
     }
 
-    public List<String> getSecuredAntPaths() {
-        return securedAntPaths;
+    public List<String> getIgnoredAntPaths() {
+        return ignoredAntPaths;
     }
 
-    public void setSecuredAntPaths(List<String> securedAntPaths) {
-        this.securedAntPaths = securedAntPaths;
+    public void setIgnoredAntPaths(List<String> ignoredAntPaths) {
+        this.ignoredAntPaths = ignoredAntPaths;
     }
 }

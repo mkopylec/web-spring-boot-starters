@@ -3,4 +3,4 @@ web.backend:
   logging.mdcValueLength: 5
   security:
     tokenKeyFile: token_key_public.pem
-    securedAntPaths: /authorization/authenticated,/authorization/authority
+    ignoredAntPaths: /mappers/**,/logging/**,/authorization/notSecured
