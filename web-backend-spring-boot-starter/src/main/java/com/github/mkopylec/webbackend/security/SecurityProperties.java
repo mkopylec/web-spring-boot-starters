@@ -9,7 +9,7 @@ import java.util.List;
 public class SecurityProperties {
 
     private String tokenKeyFile = "token_key.pem";
-    private List<String> ignoredPaths = new ArrayList<>();
+    private List<String> securedAntPaths = new ArrayList<>();
 
     public String getTokenKeyFile() {
         return tokenKeyFile;
@@ -19,11 +19,11 @@ public class SecurityProperties {
         this.tokenKeyFile = tokenKeyFile;
     }
 
-    public List<String> getIgnoredPaths() {
-        return ignoredPaths;
+    public List<String> getSecuredAntPaths() {
+        return securedAntPaths;
     }
 
-    public void setIgnoredPaths(List<String> ignoredPaths) {
-        this.ignoredPaths = ignoredPaths;
+    public void setSecuredAntPaths(List<String> securedAntPaths) {
+        this.securedAntPaths = securedAntPaths;
     }
 }

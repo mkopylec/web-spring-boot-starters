@@ -28,4 +28,10 @@ public class TokenAuthorizationEndpoint {
     public ResponseData permitUser() {
         return new ResponseData(RESPONSE_DATA_MESSAGE);
     }
+
+    @GET
+    @Path("notSecured")
+    @PreAuthorize("isAuthenticated()")
+    public void denyNotAuthenticated() {
+    }
 }

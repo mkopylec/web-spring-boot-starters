@@ -77,4 +77,20 @@ class TokenAuthorizationSpec extends BasicSpec {
         invalidAuthorizationToken() | 'invalid'
         expiredAuthorizationToken() | 'expired'
     }
+
+    def "Should not get response data when authenticated but endpoint not added to secured ones"() {
+        given:
+        def authorizationToken = validAuthorizationToken()
+
+        when:
+        def response = GET 'authorization/notSecured', authorizationToken
+
+        then:
+        response.status == 401
+
+        def errors = response.readEntity(new GenericType<List<Error>>() {})
+        assertThat(errors)
+                .containsErrors(1)
+                .containsErrorFor('SECURITY_ERROR', 'An Authentication object was not found in the SecurityContext', 'org.springframework.security.authentication.AuthenticationCredentialsNotFoundException', '/authorization/notSecured')
+    }
 }

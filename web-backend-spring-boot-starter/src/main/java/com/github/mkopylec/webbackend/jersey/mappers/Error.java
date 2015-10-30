@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.mkopylec.webbackend.exceptions.ApplicationException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.WebApplicationException;
@@ -16,6 +17,7 @@ public class Error {
     public static final String WEB_APPLICATION_EXCEPTION_ERROR_CODE = "HTTP_ERROR";
     public static final String CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE = "VALIDATION_ERROR";
     public static final String ACCESS_DENIED_EXCEPTION_ERROR_CODE = "SECURITY_ERROR";
+    public static final String AUTHENTICATION_CREDENTIALS_NOT_FOUND_EXCEPTION_ERROR_CODE = "SECURITY_ERROR";
 
     private final String errorCode;
     private final String message;
@@ -44,6 +46,10 @@ public class Error {
 
     public static Error errorFromAccessDeniedException(AccessDeniedException ex, String path) {
         return new Error(ACCESS_DENIED_EXCEPTION_ERROR_CODE, ex.getMessage(), ex.getClass().getName(), path);
+    }
+
+    public static Error errorFromAuthenticationCredentialsNotFoundException(AuthenticationCredentialsNotFoundException ex, String path) {
+        return new Error(AUTHENTICATION_CREDENTIALS_NOT_FOUND_EXCEPTION_ERROR_CODE, ex.getMessage(), ex.getClass().getName(), path);
     }
 
     public static Error errorFromApplicationException(ApplicationException ex, String path) {
