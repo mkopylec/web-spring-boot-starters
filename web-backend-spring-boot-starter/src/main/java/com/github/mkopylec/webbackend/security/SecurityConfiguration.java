@@ -12,7 +12,6 @@ import org.springframework.security.web.access.intercept.FilterSecurityIntercept
 
 import java.util.List;
 
-import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -31,14 +30,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        List<String> securedPaths = security.getIgnoredAntPaths();
-        if (isNotEmpty(securedPaths)) {
-            TokenAuthorizationFilter authenticationFilter = new TokenAuthorizationFilter(security);
-            http
-                    .csrf().disable()
-                    .sessionManagement().sessionCreationPolicy(STATELESS)
-                    .and()
-                    .addFilterBefore(authenticationFilter, FilterSecurityInterceptor.class);
-        }
+        TokenAuthorizationFilter authenticationFilter = new TokenAuthorizationFilter(security);
+        http
+                .csrf().disable()
+                .sessionManagement().sessionCreationPolicy(STATELESS)
+                .and()
+                .addFilterBefore(authenticationFilter, FilterSecurityInterceptor.class);
     }
 }
