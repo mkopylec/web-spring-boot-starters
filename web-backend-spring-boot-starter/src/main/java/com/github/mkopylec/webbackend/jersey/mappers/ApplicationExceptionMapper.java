@@ -1,6 +1,6 @@
 package com.github.mkopylec.webbackend.jersey.mappers;
 
-import com.github.mkopylec.webbackend.exceptions.ApplicationException;
+import com.github.mkopylec.webbackend.jersey.exceptions.ApplicationException;
 import com.github.mkopylec.webbackend.jersey.JerseyProperties;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

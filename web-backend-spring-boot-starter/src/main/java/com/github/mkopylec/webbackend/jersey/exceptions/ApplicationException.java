@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.exceptions;
+package com.github.mkopylec.webbackend.jersey.exceptions;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Response.Status;

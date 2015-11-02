@@ -1,6 +1,6 @@
 package com.github.mkopylec.webbackend.app.mappers;
 
-import com.github.mkopylec.webbackend.exceptions.ApplicationException;
+import com.github.mkopylec.webbackend.jersey.exceptions.ApplicationException;
 import org.springframework.stereotype.Component;
 
 import javax.validation.Valid;

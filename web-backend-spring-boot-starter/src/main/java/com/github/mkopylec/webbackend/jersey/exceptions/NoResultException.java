@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.exceptions;
+package com.github.mkopylec.webbackend.jersey.exceptions;
 
 import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 

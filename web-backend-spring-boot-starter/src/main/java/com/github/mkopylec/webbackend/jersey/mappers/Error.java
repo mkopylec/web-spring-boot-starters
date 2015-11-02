@@ -2,7 +2,7 @@ package com.github.mkopylec.webbackend.jersey.mappers;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.github.mkopylec.webbackend.exceptions.ApplicationException;
+import com.github.mkopylec.webbackend.jersey.exceptions.ApplicationException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
