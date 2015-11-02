@@ -9,9 +9,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class MdcEnabler implements Filter {
 
@@ -23,12 +25,21 @@ public class MdcEnabler implements Filter {
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        MDC.put(logging.getMdcKey(), randomAlphanumeric(logging.getMdcValueLength()));
+        MDC.put(logging.getMdcKey(), getMdcValue(request));
         try {
             chain.doFilter(request, response);
         } finally {
             MDC.remove(logging.getMdcKey());
         }
+    }
+
+    private String getMdcValue(ServletRequest request) {
+        HttpServletRequest servletRequest = (HttpServletRequest) request;
+        String mdcHeader = servletRequest.getHeader(logging.getMdcHttpHeader());
+        if (isNotBlank(mdcHeader)) {
+            return mdcHeader;
+        }
+        return randomAlphanumeric(logging.getMdcValueLength());
     }
 
     @Override

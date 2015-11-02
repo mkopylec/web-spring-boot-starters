@@ -17,7 +17,7 @@ class TokenAuthorizationSpec extends BasicSpec {
         def authorizationToken = validAuthorizationToken()
 
         when:
-        def response = GET 'authorization/authenticated', authorizationToken
+        def response = GET 'authorization/authenticated', [Authorization: "Bearer $authorizationToken"]
 
         then:
         response.status == 200
@@ -32,7 +32,7 @@ class TokenAuthorizationSpec extends BasicSpec {
         def authorizationToken = validAuthorizationToken(['USER'])
 
         when:
-        def response = GET 'authorization/authority', authorizationToken
+        def response = GET 'authorization/authority', [Authorization: "Bearer $authorizationToken"]
 
         then:
         response.status == 200
@@ -47,7 +47,7 @@ class TokenAuthorizationSpec extends BasicSpec {
         def authorizationToken = validAuthorizationToken(['ADMIN'])
 
         when:
-        def response = GET 'authorization/authority', authorizationToken
+        def response = GET 'authorization/authority', [Authorization: "Bearer $authorizationToken"]
 
         then:
         response.status == 401
@@ -83,7 +83,7 @@ class TokenAuthorizationSpec extends BasicSpec {
         def authorizationToken = validAuthorizationToken()
 
         when:
-        def response = GET 'authorization/notSecured', authorizationToken
+        def response = GET 'authorization/notSecured', [Authorization: "Bearer $authorizationToken"]
 
         then:
         response.status == 401

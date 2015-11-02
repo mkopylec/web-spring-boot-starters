@@ -19,6 +19,7 @@ import spock.lang.Specification
 
 import javax.ws.rs.client.Client
 import javax.ws.rs.client.WebTarget
+import javax.ws.rs.core.MultivaluedHashMap
 import javax.ws.rs.core.Response
 
 import static java.time.LocalDateTime.now
@@ -50,10 +51,10 @@ abstract class BasicSpec extends Specification {
                 .get()
     }
 
-    protected Response GET(String path, String authorizationToken) {
+    protected Response GET(String path, Map<String, Object> headers) {
         return getWebTarget(path)
                 .request()
-                .header('Authorization', "Bearer $authorizationToken")
+                .headers(new MultivaluedHashMap<>(headers))
                 .get()
     }
 
