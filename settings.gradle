@@ -1,3 +1,7 @@
 rootProject.name = 'web-spring-boot-starters'
 include 'web-backend-spring-boot-starter'
 include 'web-frontend-spring-boot-starter'
+include 'web-backend-spring-jersey'
+include 'web-backend-spring-logging'
+include 'web-backend-spring-security'
+

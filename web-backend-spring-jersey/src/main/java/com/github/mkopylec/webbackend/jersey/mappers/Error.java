@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.github.mkopylec.webbackend.jersey.exceptions.ApplicationException;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
 
 import javax.validation.ConstraintViolationException;
 import javax.ws.rs.WebApplicationException;
@@ -44,12 +42,8 @@ public class Error {
         return new Error(CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE, ex.getMessage(), ex.getClass().getName(), path);
     }
 
-    public static Error errorFromAccessDeniedException(AccessDeniedException ex, String path) {
+    public static Error errorFromAccessDeniedException(Exception ex, String path) {
         return new Error(ACCESS_DENIED_EXCEPTION_ERROR_CODE, ex.getMessage(), ex.getClass().getName(), path);
-    }
-
-    public static Error errorFromAuthenticationCredentialsNotFoundException(AuthenticationCredentialsNotFoundException ex, String path) {
-        return new Error(AUTHENTICATION_CREDENTIALS_NOT_FOUND_EXCEPTION_ERROR_CODE, ex.getMessage(), ex.getClass().getName(), path);
     }
 
     public static Error errorFromApplicationException(ApplicationException ex, String path) {
