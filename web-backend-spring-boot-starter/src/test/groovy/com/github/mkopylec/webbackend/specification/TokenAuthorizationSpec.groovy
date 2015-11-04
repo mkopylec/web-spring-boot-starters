@@ -61,7 +61,7 @@ class TokenAuthorizationSpec extends BasicSpec {
     @Unroll
     def "Should not get response data with #text authorization token"() {
         when:
-        def response = GET 'authorization/authenticated'
+        def response = GET 'authorization/authenticated', [Authorization: "Bearer $authorizationToken"]
 
         then:
         response.status == 401
@@ -76,21 +76,5 @@ class TokenAuthorizationSpec extends BasicSpec {
         null                        | 'empty'
         invalidAuthorizationToken() | 'invalid'
         expiredAuthorizationToken() | 'expired'
-    }
-
-    def "Should not get response data when authenticated but endpoint not added to secured ones"() {
-        given:
-        def authorizationToken = validAuthorizationToken()
-
-        when:
-        def response = GET 'authorization/notSecured', [Authorization: "Bearer $authorizationToken"]
-
-        then:
-        response.status == 401
-
-        def errors = response.readEntity(new GenericType<List<Error>>() {})
-        assertThat(errors)
-                .containsErrors(1)
-                .containsErrorFor('SECURITY_ERROR', 'An Authentication object was not found in the SecurityContext', 'org.springframework.security.authentication.AuthenticationCredentialsNotFoundException', '/authorization/notSecured')
     }
 }

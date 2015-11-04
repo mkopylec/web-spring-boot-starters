@@ -17,7 +17,7 @@ public class TokenAuthorizationEndpoint {
 
     @GET
     @Path("authenticated")
-    @PreAuthorize("isAuthenticated()")
+    @PreAuthorize("authentication.authenticated")
     public ResponseData permitAuthenticated() {
         return new ResponseData(RESPONSE_DATA_MESSAGE);
     }
@@ -27,11 +27,5 @@ public class TokenAuthorizationEndpoint {
     @PreAuthorize("hasRole('USER')")
     public ResponseData permitUser() {
         return new ResponseData(RESPONSE_DATA_MESSAGE);
-    }
-
-    @GET
-    @Path("notSecured")
-    @PreAuthorize("isAuthenticated()")
-    public void denyNotAuthenticated() {
     }
 }

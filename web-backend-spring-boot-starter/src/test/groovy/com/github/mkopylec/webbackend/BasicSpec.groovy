@@ -65,12 +65,12 @@ abstract class BasicSpec extends Specification {
     }
 
     protected String validAuthorizationToken(List<String> authorities = []) {
-        def expirationTime = now().plusMinutes(1).toEpochSecond(UTC)
+        def expirationTime = now().plusDays(1).toEpochSecond(UTC)
         return generateAuthorizationToken(expirationTime, authorities)
     }
 
     protected String expiredAuthorizationToken(List<String> authorities = []) {
-        def expirationTime = now().minusMinutes(1).toEpochSecond(UTC)
+        def expirationTime = now().minusDays(1).toEpochSecond(UTC)
         return generateAuthorizationToken(expirationTime, authorities)
     }
 
