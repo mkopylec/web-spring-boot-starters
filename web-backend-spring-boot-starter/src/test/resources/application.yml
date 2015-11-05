@@ -3,4 +3,4 @@ web.backend:
   logging.mdcValueLength: 5
   security:
     tokenKeyFile: token_key_public.pem
-    ignoredAntPaths: /mappers/**,/logging/**
+    ignoredAntPaths: /jersey/**,/logging/**

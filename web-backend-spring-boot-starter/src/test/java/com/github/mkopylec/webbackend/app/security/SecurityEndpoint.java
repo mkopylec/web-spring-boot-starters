@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.authorization;
+package com.github.mkopylec.webbackend.app.security;
 
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Component;
@@ -7,13 +7,13 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import static com.github.mkopylec.webbackend.app.Strings.RESPONSE_DATA_MESSAGE;
+import static com.github.mkopylec.webbackend.app.Constants.RESPONSE_DATA_MESSAGE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 
 @Component
-@Path("authorization")
+@Path("security")
 @Produces(APPLICATION_JSON)
-public class TokenAuthorizationEndpoint {
+public class SecurityEndpoint {
 
     @GET
     @Path("authenticated")

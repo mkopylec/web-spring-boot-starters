@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.mappers;
+package com.github.mkopylec.webbackend.app.jersey;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;

@@ -1,0 +1,15 @@
+apply plugin: 'groovy'
+
+dependencies {
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '+'
+    compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '+'
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '+'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '+'
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '+'
+    compile group: 'org.apache.commons', name: 'commons-io', version: '+'
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '+'
+
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '+'
+    testCompile group: 'org.spockframework', name: 'spock-spring', version: '+'
+}

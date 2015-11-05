@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.mappers;
+package com.github.mkopylec.webbackend.app.jersey;
 
 import com.github.mkopylec.webbackend.jersey.exceptions.ApplicationException;
 import org.springframework.stereotype.Component;
@@ -10,18 +10,25 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import static com.github.mkopylec.webbackend.app.Strings.APPLICATION_EXCEPTION_CODE;
-import static com.github.mkopylec.webbackend.app.Strings.APPLICATION_EXCEPTION_MESSAGE;
-import static com.github.mkopylec.webbackend.app.Strings.CUSTOM_EXCEPTION_MESSAGE;
-import static com.github.mkopylec.webbackend.app.Strings.EXCEPTION_MESSAGE;
-import static com.github.mkopylec.webbackend.app.Strings.THROWABLE_MESSAGE;
+import static com.github.mkopylec.webbackend.app.Constants.APPLICATION_EXCEPTION_CODE;
+import static com.github.mkopylec.webbackend.app.Constants.APPLICATION_EXCEPTION_MESSAGE;
+import static com.github.mkopylec.webbackend.app.Constants.CUSTOM_EXCEPTION_MESSAGE;
+import static com.github.mkopylec.webbackend.app.Constants.EXCEPTION_MESSAGE;
+import static com.github.mkopylec.webbackend.app.Constants.RESPONSE_DATA_NUMBER;
+import static com.github.mkopylec.webbackend.app.Constants.THROWABLE_MESSAGE;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static javax.ws.rs.core.Response.Status.NOT_IMPLEMENTED;
 
 @Component
-@Path("mappers")
+@Path("jersey")
 @Produces(APPLICATION_JSON)
-public class ExceptionMappersEndpoint {
+public class JerseyEndpoint {
+
+    @GET
+    @Path("data")
+    public ResponseData getResponseData() {
+        return new ResponseData(RESPONSE_DATA_NUMBER);
+    }
 
     @GET
     @Path("throwable")

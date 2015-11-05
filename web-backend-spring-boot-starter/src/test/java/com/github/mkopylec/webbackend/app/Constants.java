@@ -1,6 +1,6 @@
 package com.github.mkopylec.webbackend.app;
 
-public final class Strings {
+public final class Constants {
 
     public static final String EMPTY_CONTENT = "EMPTY_CONTENT";
     public static final String INVALID_NUMBER = "INVALID_NUMBER";
@@ -12,6 +12,8 @@ public final class Strings {
     public static final String RESPONSE_DATA_MESSAGE = "Response data message";
     public static final String LOGGER_MESSAGE = "LOGGER_MESSAGE";
 
-    private Strings() {
+    public static final int RESPONSE_DATA_NUMBER = 69;
+
+    private Constants() {
     }
 }

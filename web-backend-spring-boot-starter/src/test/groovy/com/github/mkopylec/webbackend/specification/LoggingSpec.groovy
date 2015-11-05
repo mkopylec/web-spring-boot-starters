@@ -3,9 +3,9 @@ package com.github.mkopylec.webbackend.specification
 import com.github.mkopylec.webbackend.BasicSpec
 import com.github.mkopylec.webbackend.utils.TestLoggerFilter
 
-import static com.github.mkopylec.webbackend.app.Strings.LOGGER_MESSAGE
+import static com.github.mkopylec.webbackend.app.Constants.LOGGER_MESSAGE
 
-class MdcLoggingSpec extends BasicSpec {
+class LoggingSpec extends BasicSpec {
 
     def "Should log message with random request ID"() {
         given:
