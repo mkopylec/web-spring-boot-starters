@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.mappers;
+package com.github.mkopylec.webbackend.app.jersey;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,8 +6,8 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.Min;
 
-import static com.github.mkopylec.webbackend.app.Strings.EMPTY_CONTENT;
-import static com.github.mkopylec.webbackend.app.Strings.INVALID_NUMBER;
+import static com.github.mkopylec.webbackend.app.Constants.EMPTY_CONTENT;
+import static com.github.mkopylec.webbackend.app.Constants.INVALID_NUMBER;
 
 public class RequestData {
 

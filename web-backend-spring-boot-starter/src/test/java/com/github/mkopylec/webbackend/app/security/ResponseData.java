@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.authorization;
+package com.github.mkopylec.webbackend.app.security;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -1,4 +1,4 @@
-package com.github.mkopylec.webbackend.app.mappers;
+package com.github.mkopylec.webbackend.app.jersey;
 
 public class CustomException extends RuntimeException {
 
