@@ -15,7 +15,6 @@ public class Error {
     public static final String WEB_APPLICATION_EXCEPTION_ERROR_CODE = "HTTP_ERROR";
     public static final String CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE = "VALIDATION_ERROR";
     public static final String ACCESS_DENIED_EXCEPTION_ERROR_CODE = "SECURITY_ERROR";
-    public static final String AUTHENTICATION_CREDENTIALS_NOT_FOUND_EXCEPTION_ERROR_CODE = "SECURITY_ERROR";
 
     private final String errorCode;
     private final String message;
