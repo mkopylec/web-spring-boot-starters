@@ -16,6 +16,11 @@ public class Error {
     public static final String CONSTRAINT_VIOLATION_EXCEPTION_ERROR_CODE = "VALIDATION_ERROR";
     public static final String ACCESS_DENIED_EXCEPTION_ERROR_CODE = "SECURITY_ERROR";
 
+    public static final String ERROR_CODE_FIELD = "errorCode";
+    public static final String MESSAGE_FIELD = "message";
+    public static final String EXCEPTION_FIELD = "exception";
+    public static final String PATH_FIELD = "path";
+
     private final String errorCode;
     private final String message;
     private final String exception;
@@ -51,10 +56,10 @@ public class Error {
 
     @JsonCreator
     public Error(
-            @JsonProperty("errorCode") String errorCode,
-            @JsonProperty("message") String message,
-            @JsonProperty("exception") String exception,
-            @JsonProperty("path") String path
+            @JsonProperty(ERROR_CODE_FIELD) String errorCode,
+            @JsonProperty(MESSAGE_FIELD) String message,
+            @JsonProperty(EXCEPTION_FIELD) String exception,
+            @JsonProperty(PATH_FIELD) String path
     ) {
         this.errorCode = errorCode;
         this.message = message;
@@ -81,10 +86,10 @@ public class Error {
     @Override
     public String toString() {
         return new ToStringBuilder(this)
-                .append("errorCode", errorCode)
-                .append("message", message)
-                .append("exception", exception)
-                .append("path", path)
+                .append(ERROR_CODE_FIELD, errorCode)
+                .append(MESSAGE_FIELD, message)
+                .append(EXCEPTION_FIELD, exception)
+                .append(PATH_FIELD, path)
                 .toString();
     }
 }
