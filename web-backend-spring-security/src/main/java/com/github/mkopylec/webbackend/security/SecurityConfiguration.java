@@ -1,8 +1,10 @@
 package com.github.mkopylec.webbackend.security;
 
 import com.github.mkopylec.webbackend.security.authorization.TokenAuthorizationFilter;
+import com.github.mkopylec.webbackend.security.ignore.SecuredEndpointsScanner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -21,11 +23,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private SecurityProperties security;
+    @Autowired
+    private SecuredEndpointsScanner scanner;
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        List<String> ignoredAntPaths = security.getIgnoredAntPaths();
-        web.ignoring().antMatchers(ignoredAntPaths.toArray(new String[ignoredAntPaths.size()]));
+        List<String> ignoredEndpoints = scanner.scanForSecuredEndpoints();
+        web.ignoring().antMatchers(ignoredEndpoints.toArray(new String[ignoredEndpoints.size()]));
     }
 
     @Override

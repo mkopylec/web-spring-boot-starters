@@ -15,31 +15,33 @@ import java.io.IOException;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
-public class MdcEnabler implements Filter {
+public class RequestTraceEnabler implements Filter {
+
+    public static final String REQUEST_ID_KEY = "requestId";
 
     private final LoggingProperties logging;
 
-    public MdcEnabler(LoggingProperties logging) {
+    public RequestTraceEnabler(LoggingProperties logging) {
         this.logging = logging;
     }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        MDC.put(logging.getMdcKey(), getMdcValue(request));
+        MDC.put(REQUEST_ID_KEY, getMdcValue(request));
         try {
             chain.doFilter(request, response);
         } finally {
-            MDC.remove(logging.getMdcKey());
+            MDC.remove(REQUEST_ID_KEY);
         }
     }
 
     private String getMdcValue(ServletRequest request) {
         HttpServletRequest servletRequest = (HttpServletRequest) request;
-        String mdcHeader = servletRequest.getHeader(logging.getMdcHttpHeader());
+        String mdcHeader = servletRequest.getHeader(logging.getRequestIdHeader());
         if (isNotBlank(mdcHeader)) {
             return mdcHeader;
         }
-        return randomAlphanumeric(logging.getMdcValueLength());
+        return randomAlphanumeric(logging.getRequestIdLength());
     }
 
     @Override

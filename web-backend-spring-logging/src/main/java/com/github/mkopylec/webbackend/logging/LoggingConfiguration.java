@@ -1,6 +1,6 @@
 package com.github.mkopylec.webbackend.logging;
 
-import com.github.mkopylec.webbackend.logging.mdc.MdcEnabler;
+import com.github.mkopylec.webbackend.logging.mdc.RequestTraceEnabler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -18,8 +18,8 @@ public class LoggingConfiguration {
 
     @Bean
     public FilterRegistrationBean mdcFilter() {
-        MdcEnabler mdcEnabler = new MdcEnabler(logging);
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean(mdcEnabler);
+        RequestTraceEnabler traceEnabler = new RequestTraceEnabler(logging);
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(traceEnabler);
         registrationBean.setOrder(HIGHEST_PRECEDENCE);
         return registrationBean;
     }

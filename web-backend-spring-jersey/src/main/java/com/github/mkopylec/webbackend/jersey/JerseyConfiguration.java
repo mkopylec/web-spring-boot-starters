@@ -11,7 +11,7 @@ import javax.ws.rs.ApplicationPath;
 import java.util.ArrayList;
 import java.util.List;
 
-@Configuration
+@Configuration("jerseyConfiguration")
 @ApplicationPath("")
 @EnableConfigurationProperties(JerseyProperties.class)
 public class JerseyConfiguration extends ResourceConfig {

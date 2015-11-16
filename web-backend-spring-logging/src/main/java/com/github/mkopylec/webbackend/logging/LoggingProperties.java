@@ -5,31 +5,22 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties("web.backend.logging")
 public class LoggingProperties {
 
-    private String mdcKey = "requestId";
-    private int mdcValueLength = 10;
-    private String mdcHttpHeader = "X-MDC";
+    private int requestIdLength = 10;
+    private String requestIdHeader = "X-Request-Id";
 
-    public String getMdcKey() {
-        return mdcKey;
+    public int getRequestIdLength() {
+        return requestIdLength;
     }
 
-    public void setMdcKey(String mdcKey) {
-        this.mdcKey = mdcKey;
+    public void setRequestIdLength(int requestIdLength) {
+        this.requestIdLength = requestIdLength;
     }
 
-    public int getMdcValueLength() {
-        return mdcValueLength;
+    public String getRequestIdHeader() {
+        return requestIdHeader;
     }
 
-    public void setMdcValueLength(int mdcValueLength) {
-        this.mdcValueLength = mdcValueLength;
-    }
-
-    public String getMdcHttpHeader() {
-        return mdcHttpHeader;
-    }
-
-    public void setMdcHttpHeader(String mdcHttpHeader) {
-        this.mdcHttpHeader = mdcHttpHeader;
+    public void setRequestIdHeader(String requestIdHeader) {
+        this.requestIdHeader = requestIdHeader;
     }
 }

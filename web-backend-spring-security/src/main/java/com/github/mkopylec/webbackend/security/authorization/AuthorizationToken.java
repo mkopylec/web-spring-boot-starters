@@ -12,8 +12,6 @@ import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 public class AuthorizationToken extends AbstractAuthenticationToken {
 
     public static final String UNKNOWN_PRINCIPAL = "Unknown";
-    public static final String EXPIRED_FLAG = "Expired";
-    public static final String NOT_EXPIRED_FLAG = "Not expired";
 
     private Object principal = UNKNOWN_PRINCIPAL;
     private List<GrantedAuthority> authorities = new ArrayList<>();

@@ -27,7 +27,7 @@ class LoggingSpec extends BasicSpec {
         loggerFilter = filter
 
         when:
-        def response = GET 'logging', ['X-MDC': '12345']
+        def response = GET 'logging', ['X-Request-Id': '12345']
 
         then:
         response.status == 204
